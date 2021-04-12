@@ -15,23 +15,33 @@
     <jsp:body>
 
         <div>
-            <h2>Our Cool Site</h2>
+            <h2>BMI Calculator</h2>
 
-            <div style="margin-top: 3em;margin-bottom: 3em;">
-                Main page for this 2. semester start project used at cphbusiness.dk
-            </div>
+            <form method="post" action="fc/bmiresult">
+                <label for="height">Your height:</label>
+                <br>
+                <input type="text" placeholder="cm" id="height" name="height">
+                <br>
+                <br>
+                <label for="weight">Your weight:</label>
+                <br>
+                <input type="text" placeholder="kg" id="weight" name="weight">
+                <br>
+                <br>
+                <button type="submit">Calculate BMI</button>
+            </form>
 
             <c:if test="${sessionScope.role == 'employee' }">
-                <p style="font-size: larger">This is what you can do,
-                    since your are logged in as an employee</p>
-                 <p><a href="fc/employeepage">Employee Page</a>
-             </c:if>
+            <p style="font-size: larger">This is what you can do,
+                since your are logged in as an employee</p>
+            <p><a href="fc/employeepage">Employee Page</a>
+                </c:if>
 
-             <c:if test="${sessionScope.role == 'customer' }">
-                <p style="font-size: larger">This is what you can do, since your
-                    are logged in as a customer</p>
-                <p><a href="fc/customerpage">Customer Page</a>
-            </c:if>
+                <c:if test="${sessionScope.role == 'customer' }">
+            <p style="font-size: larger">This is what you can do, since your
+                are logged in as a customer</p>
+            <p><a href="fc/customerpage">Customer Page</a>
+                </c:if>
 
         </div>
 
