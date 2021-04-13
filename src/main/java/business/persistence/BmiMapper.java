@@ -1,8 +1,11 @@
 package business.persistence;
 
+import business.entities.BmiEntry;
+import business.entities.User;
 import business.exceptions.UserException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BmiMapper {
@@ -11,6 +14,34 @@ public class BmiMapper {
 
     public BmiMapper(Database database) {
         this.database = database;
+    }
+
+    public List<BmiEntry> getAllBmiDataEntries() throws UserException {
+        List<BmiEntry> bmiEntryList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM bmi_entry";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt("bmi_entry_id");
+                    int height = rs.getInt("height");
+                    int weight = rs.getInt("weight");
+                    String category = rs.getString("category");
+                    double bmi = rs.getDouble("bmi");
+                    String gender = rs.getString("gender");
+
+
+                    BmiEntry tmpBmiEntry = new BmiEntry(id, height, weight, category, bmi, gender);
+                    bmiEntryList.add(tmpBmiEntry);
+                }
+                return bmiEntryList;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
     }
 
     public void insertBmiEntry(double bmi, double height, double weight, String category, String gender, int sportId, int userId, List<Integer> hobbyListInteger) throws UserException {

@@ -12,5 +12,7 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
 
+        <p><a href="${pageContext.request.contextPath}/fc/bmientries">Proceed to the BMI data page</a></p>
+
     </jsp:body>
 </t:genericpage>
