@@ -50,11 +50,11 @@
                             <option value="4">Badminton</option>
                         </select>
                     </div>
-                    <input type="checkbox" id="hobby1" name="hobby" value="I value a healthy diet">
+                    <input type="checkbox" id="hobby1" name="hobby" value="1">
                     <label for="hobby1"> I value a healthy diet</label><br>
-                    <input type="checkbox" id="hobby2" name="hobby" value="I have a summerhouse">
+                    <input type="checkbox" id="hobby2" name="hobby" value="2">
                     <label for="hobby2"> I have a summerhouse</label><br>
-                    <input type="checkbox" id="hobby3" name="hobby" value="I have a pet">
+                    <input type="checkbox" id="hobby3" name="hobby" value="3">
                     <label for="hobby3"> I have a pet</label><br>
                     <br>
                     <button type="submit" class="btn btn-primary">Calculate BMI</button>

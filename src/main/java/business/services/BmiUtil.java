@@ -2,7 +2,7 @@ package business.services;
 
 public class BmiUtil {
 
-    public Double calculateBMI(Double height, Double weight) {
+    public double calculateBMI(Double height, Double weight) {
 
         return weight / ((height / 100) * (height / 100));
     }
