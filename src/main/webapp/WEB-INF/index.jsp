@@ -14,23 +14,55 @@
 
     <jsp:body>
 
+
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+
+                <h2>BMI Calculator</h2>
+                <form method="post" action="${pageContext.request.contextPath}/fc/bmiresult">
+                    <div class="form-group">
+                        <label for="height">Your height:</label>
+                        <br>
+                        <input type="text" placeholder="cm" id="height" name="height" class="form-control">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label for="weight">Your weight:</label>
+                        <br>
+                        <input type="text" placeholder="kg" id="weight" name="weight" class="form-control">
+                    </div>
+                    <br>
+                    <div>
+                        <label for="Male">Mand</label>
+                        <input type="radio" id="Male" name="gender" value="Male">
+                        <label for="Female">Kvinde</label>
+                        <input type="radio" id="Female" name="gender" value="Female">
+                    </div>
+                    <div>
+
+                        <label for="sport">Your primary sport</label>
+                        <select name="sport" id="sport">
+                            <option value="1">Football</option>
+                            <option value="2">Gymnastics</option>
+                            <option value="3">Yoga</option>
+                            <option value="4">Badminton</option>
+                        </select>
+                    </div>
+                    <input type="checkbox" id="hobby1" name="hobby" value="I value a healthy diet">
+                    <label for="hobby1"> I value a healthy diet</label><br>
+                    <input type="checkbox" id="hobby2" name="hobby" value="I have a summerhouse">
+                    <label for="hobby2"> I have a summerhouse</label><br>
+                    <input type="checkbox" id="hobby3" name="hobby" value="I have a pet">
+                    <label for="hobby3"> I have a pet</label><br>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Calculate BMI</button>
+                </form>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
         <div>
-            <h2>BMI Calculator</h2>
-
-            <form method="post" action="fc/bmiresult">
-                <label for="height">Your height:</label>
-                <br>
-                <input type="text" placeholder="cm" id="height" name="height">
-                <br>
-                <br>
-                <label for="weight">Your weight:</label>
-                <br>
-                <input type="text" placeholder="kg" id="weight" name="weight">
-                <br>
-                <br>
-                <button type="submit">Calculate BMI</button>
-            </form>
-
             <c:if test="${sessionScope.role == 'employee' }">
             <p style="font-size: larger">This is what you can do,
                 since your are logged in as an employee</p>
@@ -42,7 +74,6 @@
                 are logged in as a customer</p>
             <p><a href="fc/customerpage">Customer Page</a>
                 </c:if>
-
         </div>
 
     </jsp:body>

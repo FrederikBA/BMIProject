@@ -13,24 +13,25 @@
     </jsp:attribute>
 
     <jsp:body>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <h2>BMI Result:</h2>
 
-        <div>
-            <h2>BMI Result:</h2>
+                <p>
+                    Your weight is: ${requestScope.weight}
+                    Your height is: ${requestScope.height}
+                </p>
 
-            <p>
-                Your weight is: ${requestScope.weight}
-                Your height is: ${requestScope.height}
-            </p>
+                <p>
+                    Your BMI is: ${requestScope.bmi}
+                </p>
 
-            <p>
-                Your BMI is: ${requestScope.bmi}
-            </p>
-
-            <p>
-                This puts you in the "${requestScope.category}" category.
-            </p>
-
-
+                <p>
+                    This puts you in the "${requestScope.category}" category.
+                </p>
+            </div>
+            <div class="col-sm-4"></div>
         </div>
 
     </jsp:body>
