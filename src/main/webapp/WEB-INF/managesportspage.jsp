@@ -11,19 +11,25 @@
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
         This is a list of all Sports:
-
-        <table>
-            <thead>
-            <th>ID</th>
-            <th>Name</th>
-            </thead>
-            <c:forEach var="sport" items="${applicationScope.sportList}">
-                <tr>
-                    <td>${sport.sportId}</td>
-                    <td>${sport.sportName}</td>
-                </tr>
-            </c:forEach>
-        </table>
-
+        <form method="post" action="${pageContext.request.contextPath}/fc/managesports">
+            <table>
+                <thead>
+                <th>ID</th>
+                <th>Name</th>
+                </thead>
+                <c:forEach var="sport" items="${applicationScope.sportList}">
+                    <tr>
+                        <td>${sport.sportId}</td>
+                        <td>${sport.sportName}</td>
+                        <td>
+                            <button type="submit" name="delete" value="${sport.sportId}">Remove</button>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <c:if test="${not empty requestScope.error}">
+                <p style="font-size: large; color: red;">${requestScope.error}</p>
+            </c:if>
+        </form>
     </jsp:body>
 </t:genericpage>

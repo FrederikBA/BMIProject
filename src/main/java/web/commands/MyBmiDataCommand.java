@@ -11,10 +11,11 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class MyBmiDataCommand extends CommandProtectedPage {
-    BmiFacade bmiFacade = new BmiFacade(database);
+    BmiFacade bmiFacade;
 
     public MyBmiDataCommand(String pageToShow, String role) {
         super(pageToShow, role);
+        bmiFacade = new BmiFacade(database);
     }
 
     @Override

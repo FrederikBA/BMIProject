@@ -144,4 +144,20 @@ public class BmiMapper {
             throw new UserException("Connection to database could not be established");
         }
     }
+
+    public int deleteSport(int sportId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "DELETE FROM SPORT WHERE sport_id = ? AND sport_id NOT IN (SELECT sport_id FROM bmi_entry)";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, sportId);
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+    }
 }
