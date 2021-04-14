@@ -145,6 +145,27 @@ public class BmiMapper {
         }
     }
 
+    public Sport getSportById(int sportId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM sport WHERE sport_id = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, sportId);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    int id = rs.getInt("sport_id");
+                    String name = rs.getString("name");
+                    return new Sport(id, name);
+                }
+                throw new UserException("Sport doesn't exist for sport_id = " + sportId);
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
     public int deleteSport(int sportId) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "DELETE FROM SPORT WHERE sport_id = ? AND sport_id NOT IN (SELECT sport_id FROM bmi_entry)";
@@ -158,6 +179,23 @@ public class BmiMapper {
             }
         } catch (SQLException ex) {
             throw new UserException(ex.getMessage());
+        }
+    }
+
+    public int updateSport(int sportId, String name) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "UPDATE sport SET name = ? WHERE sport_id = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setString(1, name);
+                ps.setInt(2, sportId);
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
         }
     }
 }

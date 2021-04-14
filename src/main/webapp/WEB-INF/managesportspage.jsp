@@ -23,6 +23,9 @@
                         <td>${sport.sportName}</td>
                         <td>
                             <button type="submit" name="delete" value="${sport.sportId}">Remove</button>
+                        <td>
+                            <button type="submit" name="edit" value="${sport.sportId}">Edit</button>
+                        </td>
                         </td>
                     </tr>
                 </c:forEach>
