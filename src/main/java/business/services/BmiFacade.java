@@ -24,4 +24,8 @@ public class BmiFacade {
         return bmiMapper.getAllBmiDataEntries();
     }
 
+    public List<BmiEntry> getBmiDataEntriesByUserId(int userId) throws UserException {
+        return bmiMapper.getBmiDataEntriesByUserId(userId);
+    }
+
 }

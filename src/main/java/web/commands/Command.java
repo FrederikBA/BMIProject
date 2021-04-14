@@ -28,6 +28,7 @@ public abstract class Command {
         commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
         commands.put("bmiresult", new CalcBMICommand("result"));
         commands.put("bmientries", new BmiDataCommand("showbmidata", "employee"));
+        commands.put("mybmientries", new MyBmiDataCommand("showmybmidata", "customer"));
     }
 
     public static Command fromPath(

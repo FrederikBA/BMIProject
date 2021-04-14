@@ -44,6 +44,34 @@ public class BmiMapper {
         }
     }
 
+    public List<BmiEntry> getBmiDataEntriesByUserId(int userId) throws UserException {
+        List<BmiEntry> bmiEntryList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM bmi_entry WHERE user_id = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, userId);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt("bmi_entry_id");
+                    int height = rs.getInt("height");
+                    int weight = rs.getInt("weight");
+                    String category = rs.getString("category");
+                    double bmi = rs.getDouble("bmi");
+                    String gender = rs.getString("gender");
+
+                    BmiEntry tmpBmiEntry = new BmiEntry(id, height, weight, category, bmi, gender);
+                    bmiEntryList.add(tmpBmiEntry);
+                }
+                return bmiEntryList;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
     public void insertBmiEntry(double bmi, double height, double weight, String category, String gender, int sportId, int userId, List<Integer> hobbyListInteger) throws UserException {
         //TODO: Insert data into database.
         try (Connection connection = database.connect()) {
