@@ -1,6 +1,7 @@
 package business.persistence;
 
 import business.entities.BmiEntry;
+import business.entities.Sport;
 import business.entities.User;
 import business.exceptions.UserException;
 
@@ -117,6 +118,30 @@ public class BmiMapper {
             }
         } catch (SQLException ex) {
             throw new UserException(ex.getMessage());
+        }
+    }
+
+    public List<Sport> getAllSports() throws UserException {
+        List<Sport> sportsList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM sport";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int id = rs.getInt("sport_id");
+                    String name = rs.getString("name");
+
+
+                    Sport tmpSport = new Sport(id, name);
+                    sportsList.add(tmpSport);
+                }
+                return sportsList;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
         }
     }
 }

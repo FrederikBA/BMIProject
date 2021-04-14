@@ -41,13 +41,11 @@
                         <input type="radio" id="Female" name="gender" value="Female">
                     </div>
                     <div>
-
                         <label for="sport">Your primary sport</label>
                         <select name="sport" id="sport">
-                            <option value="1">Football</option>
-                            <option value="2">Gymnastics</option>
-                            <option value="3">Yoga</option>
-                            <option value="4">Badminton</option>
+                            <c:forEach var="sport" items="${applicationScope.sportList}">
+                                <option value="${sport.sportId}">${sport.sportName}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <input type="checkbox" id="hobby1" name="hobby" value="1">

@@ -13,6 +13,8 @@
         You are now logged in as a EMPLOYEE of our wonderful site.
 
         <p><a href="${pageContext.request.contextPath}/fc/bmientries">Proceed to the BMI data page</a></p>
+        <p><a href="${pageContext.request.contextPath}/fc/managesports">Proceed to the sports managing page</a></p>
+
 
     </jsp:body>
 </t:genericpage>

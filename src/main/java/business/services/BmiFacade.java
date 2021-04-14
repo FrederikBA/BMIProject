@@ -1,6 +1,7 @@
 package business.services;
 
 import business.entities.BmiEntry;
+import business.entities.Sport;
 import business.exceptions.UserException;
 import business.persistence.BmiMapper;
 import business.persistence.Database;
@@ -28,4 +29,8 @@ public class BmiFacade {
         return bmiMapper.getBmiDataEntriesByUserId(userId);
     }
 
+    public List<Sport> getAllSports() throws UserException {
+
+        return bmiMapper.getAllSports();
+    }
 }

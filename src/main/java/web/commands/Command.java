@@ -29,6 +29,7 @@ public abstract class Command {
         commands.put("bmiresult", new CalcBMICommand("result"));
         commands.put("bmientries", new BmiDataCommand("showbmidata", "employee"));
         commands.put("mybmientries", new MyBmiDataCommand("showmybmidata", "customer"));
+        commands.put("managesports", new ManageSportsCommand("managesportspage", "emplo yee"));
     }
 
     public static Command fromPath(
