@@ -12,7 +12,7 @@
         <h1>Hello ${sessionScope.email} </h1>
         This is a list of all BMI entries in the database so far:
 
-        <table>
+        <table class="table table-striped">
             <thead>
             <th>ID</th>
             <th>BMI</th>

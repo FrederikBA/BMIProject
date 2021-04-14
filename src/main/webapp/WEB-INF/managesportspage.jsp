@@ -12,7 +12,7 @@
         <h1>Hello ${sessionScope.email} </h1>
         This is a list of all Sports:
         <form method="post" action="${pageContext.request.contextPath}/fc/managesports">
-            <table>
+            <table class="table table-striped">
                 <thead>
                 <th>ID</th>
                 <th>Name</th>
@@ -22,9 +22,9 @@
                         <td>${sport.sportId}</td>
                         <td>${sport.sportName}</td>
                         <td>
-                            <button type="submit" name="delete" value="${sport.sportId}">Remove</button>
+                            <button class="btn btn-danger btn-sm" type="submit" name="delete" value="${sport.sportId}">Remove</button>
                         <td>
-                            <button type="submit" name="edit" value="${sport.sportId}">Edit</button>
+                            <button class="btn btn-primary btn-sm" type="submit" name="edit" value="${sport.sportId}">Edit</button>
                         </td>
                         </td>
                     </tr>
